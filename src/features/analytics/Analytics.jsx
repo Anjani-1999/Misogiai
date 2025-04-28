@@ -7,10 +7,10 @@ import {
   FiMoreVertical,
   FiTrash2,
 } from "react-icons/fi";
-import VideoUploadModal from "./VideoUploadModal";
-import CommentModal from "./CommentModal";
+import VideoUploadModal from "../videos/VideoUploadModal";
+import CommentModal from "../videos/CommentModal";
 import { useNavigate } from "react-router-dom";
-import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import ConfirmDeleteModal from "../../components/ConfirmDeleteModal";
 
 export default function Analytics() {
   const [videos, setVideos] = useState([]);

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { PlusIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import { StrictModeDroppable } from "./StrictModeDroppable";
-import { fetchWithAuth } from "../utils/auth";
+import { fetchWithAuth } from "../../api/auth";
 
 const API_BASE_URL = "http://localhost:8083";
 

@@ -64,6 +64,12 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
         if (data.refresh_token) {
           localStorage.setItem("refresh_token", data.refresh_token);
         }
+        // Store user_id from response
+        if (data.userId) {
+          localStorage.setItem("user_id", data.userId);
+        } else if (data.data?.userId) {
+          localStorage.setItem("user_id", data.data.userId);
+        }
         setLoading(false);
         if (onLoginSuccess) {
           onLoginSuccess();
@@ -103,7 +109,7 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
           localStorage.setItem("access_token", data.data.access_token);
         }
 
-        // Save userId to localStorage
+        // Store user_id from response
         if (data.userId) {
           localStorage.setItem("user_id", data.userId);
         } else if (data.data?.userId) {

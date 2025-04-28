@@ -9,6 +9,7 @@ import {
   FiPlus,
   FiFilter,
 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const categories = [
   "Web Development",
@@ -112,7 +113,7 @@ const Header = ({
           >
             <FiMenu className="w-6 h-6" />
           </button>
-          <div className="flex items-center ml-2">
+          <Link to="/" className="flex items-center ml-2">
             {/* Improved CodeCast Logo: Larger, bolder, and better aligned */}
             <span className="flex items-center justify-center h-10 w-10 mr-2">
               <svg
@@ -156,7 +157,7 @@ const Header = ({
               CodeCast
             </span>
             <span className="text-xs text-gray-500 ml-1 mt-2">IN</span>
-          </div>
+          </Link>
         </div>
 
         {/* Center section - Search bar */}
@@ -288,28 +289,6 @@ const Header = ({
             </button>
           )}
         </div>
-      </div>
-      {/* Tags bar */}
-      <div className="w-full overflow-x-auto whitespace-nowrap py-2 px-4 bg-white border-b border-gray-200 flex gap-2 scrollbar-hide">
-        {tagsLoading ? (
-          <span className="text-gray-500 text-sm px-4">Loading tags...</span>
-        ) : tagsList.length === 0 ? (
-          <span className="text-gray-500 text-sm px-4">No tags</span>
-        ) : (
-          tagsList.map((tag) => (
-            <button
-              key={tag}
-              className={`inline-block px-4 py-1.5 rounded-lg font-medium text-sm transition-all border ${
-                selectedTags.includes(tag)
-                  ? "bg-gray-900 text-white border-gray-900"
-                  : "bg-gray-200 text-gray-800 border-gray-200 hover:bg-gray-300"
-              }`}
-              onClick={() => handleTagClick(tag)}
-            >
-              {tag}
-            </button>
-          ))
-        )}
       </div>
     </header>
   );

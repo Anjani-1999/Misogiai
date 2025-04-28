@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import LoginModal from "./LoginModal";
-import { logoutUser } from "../utils/auth";
+import { logoutUser } from "../api/auth";
 
 const Navbar = ({ isLoggedIn, onLoginSuccess }) => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);

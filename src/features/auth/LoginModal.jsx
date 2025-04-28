@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { validateToken, logout } from "../utils/auth";
+import { validateToken, logout } from "../../api/auth";
 
 const API_BASE_URL = "http://localhost:8083";
 const FRONTEND_ORIGIN = "http://localhost:5173";
@@ -71,7 +71,7 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
             console.log("No refresh token in response");
           }
         }
-        // Save userId to localStorage (top-level or nested)
+        // Store user_id from response
         if (data.userId) {
           localStorage.setItem("user_id", data.userId);
         } else if (data.data && data.data.userId) {
@@ -111,7 +111,7 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
           localStorage.setItem("accessToken", data.data.access_token);
           localStorage.setItem("userName", data.data.user_name);
         }
-        // Save userId to localStorage (top-level or nested)
+        // Store user_id from response
         if (data.userId) {
           localStorage.setItem("user_id", data.userId);
         } else if (data.data && data.data.userId) {

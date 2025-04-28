@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import VideoCard from "./components/VideoCard";
+import Header from "./layouts/Header";
+import Sidebar from "./layouts/Sidebar";
+import VideoCard from "./features/videos/VideoCard";
 import { videos } from "./mockData";
-import AuthModal from "./components/AuthModal";
-import VideoUploadModal from "./components/VideoUploadModal";
+import AuthModal from "./features/auth/AuthModal";
+import VideoUploadModal from "./features/videos/VideoUploadModal";
 import { Routes, Route, useLocation } from "react-router-dom";
-import VideoDetail from "./components/VideoDetail";
-import Analytics from "./components/Analytics";
+import VideoDetail from "./features/videos/VideoDetail";
+import Analytics from "./features/analytics/Analytics";
 import axios from "axios";
+import { fetchVideos as apiFetchVideos } from "./api/videos";
+import { fetchTags as apiFetchTags } from "./api/tags";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -24,7 +26,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef();
 
-  const [tags, setTags] = useState([]);
+  const [allTags, setAllTags] = useState([]); // All available tags
+  const [selectedTag, setSelectedTag] = useState("All"); // Currently selected tag
   const [tagsLoading, setTagsLoading] = useState(true);
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -134,16 +137,7 @@ function App() {
         if (cat && cat.length > 0) payload.category = cat;
         if (diff) payload.difficulty = diff;
         if (tagsArr && tagsArr.length > 0) payload.tags = tagsArr;
-        const response = await axios.post(
-          "http://localhost:8083/auth/api/get/video/filter",
-          payload,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await apiFetchVideos(payload, token);
         const data = response.data;
         if (data && data.data) {
           setVideos((prev) =>
@@ -170,8 +164,14 @@ function App() {
     setVideos([]);
     setPage(0);
     setHasMore(true);
-    fetchVideos(0, searchTerm, category, difficulty, tags);
-  }, [searchTerm, category, difficulty, tags]);
+    fetchVideos(
+      0,
+      searchTerm,
+      category,
+      difficulty,
+      selectedTag === "All" ? [] : [selectedTag]
+    );
+  }, [searchTerm, category, difficulty, selectedTag]);
 
   // Infinite scroll observer
   useEffect(() => {
@@ -179,7 +179,13 @@ function App() {
     const observer = new window.IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          fetchVideos(page + 1, searchTerm, category, difficulty, tags);
+          fetchVideos(
+            page + 1,
+            searchTerm,
+            category,
+            difficulty,
+            selectedTag === "All" ? [] : [selectedTag]
+          );
         }
       },
       { threshold: 1 }
@@ -196,27 +202,23 @@ function App() {
     searchTerm,
     category,
     difficulty,
-    tags,
+    selectedTag,
   ]);
 
+  // Fetch tags
   useEffect(() => {
     const fetchTags = async () => {
       setTagsLoading(true);
       try {
         const token = localStorage.getItem("access_token");
-        const response = await fetch("http://localhost:8083/auth/api/tags", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-        if (response.ok && data.tags) {
-          setTags(["All", ...data.tags.map((t) => t.tag)]);
+        const data = await apiFetchTags(token);
+        if (data && data.tags) {
+          setAllTags(["All", ...data.tags.map((t) => t.tag)]);
         } else {
-          setTags(["All"]);
+          setAllTags(["All"]);
         }
       } catch (err) {
-        setTags(["All"]);
+        setAllTags(["All"]);
       } finally {
         setTagsLoading(false);
       }
@@ -229,7 +231,6 @@ function App() {
     setSearchTerm(term);
     setCategory(cat);
     setDifficulty(diff);
-    setTags(tagsArr);
   };
 
   return (
@@ -257,32 +258,35 @@ function App() {
           sidebarOpen ? "ml-64" : "ml-0"
         }`}
       >
+        {/* Sticky YouTube-like Tags Bar */}
+        <div
+          className={`sticky top-14 z-10 w-full bg-white border-b border-gray-200 shadow-sm overflow-x-auto whitespace-nowrap flex gap-2 scrollbar-hide transition-all duration-300 ${
+            sidebarOpen ? "ml-0" : "ml-0"
+          }`}
+        >
+          {tagsLoading ? (
+            <span className="text-gray-500 text-sm px-4">Loading tags...</span>
+          ) : (
+            allTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setSelectedTag(tag)}
+                className={`inline-block px-4 py-1.5 rounded-full font-medium text-sm transition-all ${
+                  selectedTag === tag
+                    ? "bg-gray-900 text-white"
+                    : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+                }`}
+              >
+                {tag}
+              </button>
+            ))
+          )}
+        </div>
         <Routes>
           <Route
             path="/"
             element={
-              <>
-                {/* Tag Bar */}
-                <div className="w-full overflow-x-auto whitespace-nowrap py-3 px-2 bg-white border-b border-gray-200 flex gap-2 scrollbar-hide">
-                  {tagsLoading ? (
-                    <span className="text-gray-500 text-sm px-4">
-                      Loading tags...
-                    </span>
-                  ) : (
-                    tags.map((tag, idx) => (
-                      <button
-                        key={tag}
-                        className={`inline-block px-4 py-1.5 rounded-lg font-medium text-sm transition-all ${
-                          idx === 0
-                            ? "bg-gray-900 text-white"
-                            : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-                        }`}
-                      >
-                        {tag}
-                      </button>
-                    ))
-                  )}
-                </div>
+              <div className="flex flex-col">
                 <div className="p-4">
                   <div
                     className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ${
@@ -315,7 +319,7 @@ function App() {
                   )}
                   <div ref={loaderRef} />
                 </div>
-              </>
+              </div>
             }
           />
           <Route path="/video/:id" element={<VideoDetail />} />
