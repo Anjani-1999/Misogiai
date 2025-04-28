@@ -1,0 +1,184 @@
+{
+  "videos": [
+    {
+      "title": "Build a Full Stack Social App with React & Next.js",
+      "description": "Next.js Tutorial 2025 - Build a Full Stack Social App with React & Next.js.",
+      "url": "https://www.youtube.com/watch?v=vUYopHWOURg",
+      "thumbnailUrl": "https://i.ytimg.com/vi/vUYopHWOURg/maxresdefault.jpg",
+      "duration": "03:00:00",
+      "category": "Web Development",
+      "numberOfComments": 0
+    },
+    {
+      "title": "React JS 19 Full Course 2025 | Build an App and Master React",
+      "description": "Dive straight into React—from basic JSX to advanced hooks—and build a real, modern app in this hands-on crash course!",
+      "url": "https://www.youtube.com/watch?v=dCLhUialKPQ",
+      "thumbnailUrl": "https://i.ytimg.com/vi/dCLhUialKPQ/maxresdefault.jpg",
+      "duration": "02:00:00",
+      "category": "Web Development",
+      "numberOfComments": 0
+    },
+    {
+      "title": "System Design Concepts Course and Interview Prep",
+      "description": "This complete system design tutorial covers scalability, reliability, data handling, and more.",
+      "url": "https://www.youtube.com/watch?v=F2FmTdLtb_4",
+      "thumbnailUrl": "https://i.ytimg.com/vi/F2FmTdLtb_4/maxresdefault.jpg",
+      "duration": "01:30:00",
+      "category": "System Design",
+      "numberOfComments": 0
+    },
+    {
+      "title": "Full 2025 Backend Dev Crash Course for Beginners With Spring",
+      "description": "Every Kotlin/Java developer should learn Spring. It gives developers a great advantage.",
+      "url": "https://www.youtube.com/watch?v=tXC9DQRWHUQ",
+      "thumbnailUrl": "https://i.ytimg.com/vi/tXC9DQRWHUQ/maxresdefault.jpg",
+      "duration": "02:15:00",
+      "category": "Backend Development",
+      "numberOfComments": 0
+    },
+    {
+      "title": "Python for Data Science 2025: Complete Course",
+      "description": "Master Python for data science with this comprehensive course covering pandas, numpy, and machine learning.",
+      "url": "https://www.youtube.com/watch?v=abc123def456",
+      "thumbnailUrl": "https://i.ytimg.com/vi/abc123def456/maxresdefault.jpg",
+      "duration": "04:30:00",
+      "category": "Data Science",
+      "numberOfComments": 0
+    },
+    {
+      "title": "AWS Cloud Practitioner Certification 2025",
+      "description": "Complete guide to passing the AWS Cloud Practitioner exam with hands-on labs and practice tests.",
+      "url": "https://www.youtube.com/watch?v=xyz789uvw123",
+      "thumbnailUrl": "https://i.ytimg.com/vi/xyz789uvw123/maxresdefault.jpg",
+      "duration": "05:00:00",
+      "category": "Cloud Computing",
+      "numberOfComments": 0
+    },
+    {
+      "title": "Docker & Kubernetes Masterclass 2025",
+      "description": "Learn containerization and orchestration with Docker and Kubernetes from scratch.",
+      "url": "https://www.youtube.com/watch?v=def456ghi789",
+      "thumbnailUrl": "https://i.ytimg.com/vi/def456ghi789/maxresdefault.jpg",
+      "duration": "03:45:00",
+      "category": "DevOps",
+      "numberOfComments": 0
+    },
+    {
+      "title": "Machine Learning with TensorFlow 2025",
+      "description": "Comprehensive guide to machine learning using TensorFlow 2.0 with practical projects.",
+      "url": "https://www.youtube.com/watch?v=ghi789jkl012",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ghi789jkl012/maxresdefault.jpg",
+      "duration": "06:00:00",
+      "category": "Machine Learning",
+      "numberOfComments": 0
+    },
+    {
+      "title": "iOS Development with SwiftUI 2025",
+      "description": "Build modern iOS apps using SwiftUI and the latest Apple frameworks.",
+      "url": "https://www.youtube.com/watch?v=jkl012mno345",
+      "thumbnailUrl": "https://i.ytimg.com/vi/jkl012mno345/maxresdefault.jpg",
+      "duration": "04:15:00",
+      "category": "Mobile Development",
+      "numberOfComments": 0
+    },
+    {
+      "title": "Blockchain Development 2025: Complete Guide",
+      "description": "Learn blockchain development from basics to advanced smart contract programming.",
+      "url": "https://www.youtube.com/watch?v=mno345pqr678",
+      "thumbnailUrl": "https://i.ytimg.com/vi/mno345pqr678/maxresdefault.jpg",
+      "duration": "05:30:00",
+      "category": "Blockchain",
+      "numberOfComments": 0
+    },
+    {
+      "title": "GraphQL API Development 2025",
+      "description": "Master GraphQL API development with Node.js and Apollo Server.",
+      "url": "https://www.youtube.com/watch?v=pqr678stu901",
+      "thumbnailUrl": "https://i.ytimg.com/vi/pqr678stu901/maxresdefault.jpg",
+      "duration": "03:20:00",
+      "category": "API Development",
+      "numberOfComments": 0
+    },
+    {
+      "title": "Rust Programming Language 2025",
+      "description": "Complete Rust programming course for systems development.",
+      "url": "https://www.youtube.com/watch?v=stu901vwx234",
+      "thumbnailUrl": "https://i.ytimg.com/vi/stu901vwx234/maxresdefault.jpg",
+      "duration": "04:45:00",
+      "category": "Systems Programming",
+      "numberOfComments": 0
+    },
+    {
+      "title": "Game Development with Unity 2025",
+      "description": "Create your first game using Unity and C# programming.",
+      "url": "https://www.youtube.com/watch?v=vwx234yza567",
+      "thumbnailUrl": "https://i.ytimg.com/vi/vwx234yza567/maxresdefault.jpg",
+      "duration": "05:15:00",
+      "category": "Game Development",
+      "numberOfComments": 0
+    },
+    {
+      "title": "Cybersecurity Fundamentals 2025",
+      "description": "Learn essential cybersecurity concepts and best practices.",
+      "url": "https://www.youtube.com/watch?v=yza567bcd890",
+      "thumbnailUrl": "https://i.ytimg.com/vi/yza567bcd890/maxresdefault.jpg",
+      "duration": "04:00:00",
+      "category": "Cybersecurity",
+      "numberOfComments": 0
+    },
+    {
+      "title": "Flutter App Development 2025",
+      "description": "Build cross-platform mobile apps using Flutter and Dart.",
+      "url": "https://www.youtube.com/watch?v=bcd890efg123",
+      "thumbnailUrl": "https://i.ytimg.com/vi/bcd890efg123/maxresdefault.jpg",
+      "duration": "03:30:00",
+      "category": "Mobile Development",
+      "numberOfComments": 0
+    },
+    {
+      "title": "SQL Database Design 2025",
+      "description": "Master database design and optimization with SQL.",
+      "url": "https://www.youtube.com/watch?v=efg123hij456",
+      "thumbnailUrl": "https://i.ytimg.com/vi/efg123hij456/maxresdefault.jpg",
+      "duration": "02:45:00",
+      "category": "Database",
+      "numberOfComments": 0
+    },
+    {
+      "title": "TypeScript Masterclass 2025",
+      "description": "Complete TypeScript course for modern web development.",
+      "url": "https://www.youtube.com/watch?v=hij456klm789",
+      "thumbnailUrl": "https://i.ytimg.com/vi/hij456klm789/maxresdefault.jpg",
+      "duration": "03:15:00",
+      "category": "Web Development",
+      "numberOfComments": 0
+    },
+    {
+      "title": "DevOps with Jenkins 2025",
+      "description": "Learn CI/CD pipeline automation with Jenkins.",
+      "url": "https://www.youtube.com/watch?v=klm789nop012",
+      "thumbnailUrl": "https://i.ytimg.com/vi/klm789nop012/maxresdefault.jpg",
+      "duration": "02:30:00",
+      "category": "DevOps",
+      "numberOfComments": 0
+    },
+    {
+      "title": "Vue.js 4 Complete Course 2025",
+      "description": "Build modern web applications with Vue.js 4.",
+      "url": "https://www.youtube.com/watch?v=nop012qrs345",
+      "thumbnailUrl": "https://i.ytimg.com/vi/nop012qrs345/maxresdefault.jpg",
+      "duration": "03:45:00",
+      "category": "Web Development",
+      "numberOfComments": 0
+    },
+    {
+      "title": "Go Programming Language 2025",
+      "description": "Master Go programming for backend development.",
+      "url": "https://www.youtube.com/watch?v=qrs345tuv678",
+      "thumbnailUrl": "https://i.ytimg.com/vi/qrs345tuv678/maxresdefault.jpg",
+      "duration": "04:20:00",
+      "category": "Backend Development",
+      "numberOfComments": 0
+    }
+  ]
+}
