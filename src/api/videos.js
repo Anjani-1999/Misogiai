@@ -1,5 +1,6 @@
 import axios from "axios";
-const API_BASE_URL = "http://localhost:8083";
+const API_BASE_URL =
+  "https://test-service-dev-1084792667556.us-central1.run.app";
 
 export const fetchVideos = (payload, token) => {
   // Only use userId if it is explicitly provided in the payload

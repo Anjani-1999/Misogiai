@@ -112,7 +112,7 @@ const VideoDetail = () => {
       try {
         const token = localStorage.getItem("access_token");
         const response = await fetch(
-          "http://localhost:8083/auth/api/get/video/filter",
+          "https://test-service-dev-1084792667556.us-central1.run.app/auth/api/get/video/filter",
           {
             method: "POST",
             headers: {
@@ -194,7 +194,7 @@ const VideoDetail = () => {
       try {
         const token = localStorage.getItem("access_token");
         const response = await fetch(
-          `http://localhost:8083/auth/api/get/video/${id}`,
+          `https://test-service-dev-1084792667556.us-central1.run.app/auth/api/get/video/${id}`,
           {
             method: "GET",
             headers: {
@@ -228,17 +228,20 @@ const VideoDetail = () => {
       try {
         const token = localStorage.getItem("access_token");
         const userId = localStorage.getItem("user_id") || 1;
-        await fetch("http://localhost:8083/auth/api/view/video", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            videoId: Number(id),
-            userId: Number(userId),
-          }),
-        });
+        await fetch(
+          "https://test-service-dev-1084792667556.us-central1.run.app/auth/api/view/video",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              videoId: Number(id),
+              userId: Number(userId),
+            }),
+          }
+        );
       } catch (e) {
         // Ignore errors for view counting
       }
@@ -255,7 +258,7 @@ const VideoDetail = () => {
       // You may want to get userId from auth context or localStorage
       const userId = localStorage.getItem("user_id") || 1;
       const response = await fetch(
-        "http://localhost:8083/auth/api/like/video",
+        "https://test-service-dev-1084792667556.us-central1.run.app/auth/api/like/video",
         {
           method: "POST",
           headers: {
@@ -290,7 +293,7 @@ const VideoDetail = () => {
       const token = localStorage.getItem("access_token");
       const userId = localStorage.getItem("user_id") || 1;
       const response = await fetch(
-        "http://localhost:8083/auth/api/comment/video",
+        "https://test-service-dev-1084792667556.us-central1.run.app/auth/api/comment/video",
         {
           method: "POST",
           headers: {

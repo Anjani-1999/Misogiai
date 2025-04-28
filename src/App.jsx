@@ -41,13 +41,16 @@ function App() {
         throw new Error("No refresh token available");
       }
 
-      const response = await fetch("http://localhost:8083/auth/refresh-token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ refresh_token: refreshToken }),
-      });
+      const response = await fetch(
+        "https://test-service-dev-1084792667556.us-central1.run.app/auth/refresh-token",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ refresh_token: refreshToken }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to refresh token");
@@ -74,7 +77,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:8083/auth/api/validate/token",
+        "https://test-service-dev-1084792667556.us-central1.run.app/auth/api/validate/token",
         {
           method: "GET",
           headers: {

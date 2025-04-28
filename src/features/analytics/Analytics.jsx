@@ -36,7 +36,7 @@ export default function Analytics() {
       const token = localStorage.getItem("access_token");
       const userId = localStorage.getItem("user_id");
       const response = await fetch(
-        "http://localhost:8083/auth/api/get/video/filter",
+        "https://test-service-dev-1084792667556.us-central1.run.app/auth/api/get/video/filter",
         {
           method: "POST",
           headers: {
@@ -84,7 +84,7 @@ export default function Analytics() {
     try {
       const token = localStorage.getItem("access_token");
       const response = await fetch(
-        `http://localhost:8083/auth/api/delete/video/${videoToDelete.videoId}`,
+        `https://test-service-dev-1084792667556.us-central1.run.app/auth/api/delete/video/${videoToDelete.videoId}`,
         {
           method: "DELETE",
           headers: {

@@ -15,7 +15,7 @@ const SearchBox = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:8083/auth/api/get/video/filter",
+        "https://test-service-dev-1084792667556.us-central1.run.app/auth/api/get/video/filter",
         {
           page: 1,
           pageSize: 10,

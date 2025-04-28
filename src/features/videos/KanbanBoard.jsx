@@ -4,7 +4,8 @@ import { PlusIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import { StrictModeDroppable } from "./StrictModeDroppable";
 import { fetchWithAuth } from "../../api/auth";
 
-const API_BASE_URL = "http://localhost:8083";
+const API_BASE_URL =
+  "https://test-service-dev-1084792667556.us-central1.run.app";
 
 export default function KanbanBoard({ boardData }) {
   const [columns, setColumns] = useState({});

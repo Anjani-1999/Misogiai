@@ -16,7 +16,7 @@ const CommentModal = ({ isOpen, onClose, videoId }) => {
       try {
         const token = localStorage.getItem("access_token");
         const response = await fetch(
-          `http://localhost:8083/auth/api/get/comments/${videoId}`,
+          `https://test-service-dev-1084792667556.us-central1.run.app/auth/api/get/comments/${videoId}`,
           {
             method: "GET",
             headers: {
@@ -66,7 +66,7 @@ const CommentModal = ({ isOpen, onClose, videoId }) => {
     try {
       const token = localStorage.getItem("access_token");
       await fetch(
-        `http://localhost:8083/auth/api/delete/comment/${commentId}`,
+        `https://test-service-dev-1084792667556.us-central1.run.app/auth/api/delete/comment/${commentId}`,
         {
           method: "DELETE",
           headers: {
@@ -79,7 +79,7 @@ const CommentModal = ({ isOpen, onClose, videoId }) => {
         try {
           const token = localStorage.getItem("access_token");
           const response = await fetch(
-            `http://localhost:8083/auth/api/get/comments/${videoId}`,
+            `https://test-service-dev-1084792667556.us-central1.run.app/auth/api/get/comments/${videoId}`,
             {
               method: "GET",
               headers: {

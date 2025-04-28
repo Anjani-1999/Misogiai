@@ -2,7 +2,8 @@ import { useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { validateToken, logout } from "../../api/auth";
 
-const API_BASE_URL = "http://localhost:8083";
+const API_BASE_URL =
+  "https://test-service-dev-1084792667556.us-central1.run.app";
 const FRONTEND_ORIGIN = "http://localhost:5173";
 
 const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {

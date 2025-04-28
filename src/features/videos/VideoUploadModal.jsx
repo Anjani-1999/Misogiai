@@ -195,8 +195,8 @@ const VideoUploadModal = ({
       }
       const response = await fetch(
         editMode && videoData
-          ? `http://localhost:8083/auth/api/edit/video`
-          : "http://localhost:8083/auth/api/upload/video",
+          ? `https://test-service-dev-1084792667556.us-central1.run.app/auth/api/edit/video`
+          : "https://test-service-dev-1084792667556.us-central1.run.app/auth/api/upload/video",
         {
           method: "POST",
           headers: {

@@ -48,11 +48,14 @@ const Header = ({
       setTagsLoading(true);
       try {
         const token = localStorage.getItem("access_token");
-        const response = await fetch("http://localhost:8083/auth/api/tags", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          "https://test-service-dev-1084792667556.us-central1.run.app/auth/api/tags",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         const data = await response.json();
         if (response.ok && data.tags) {
           setTagsList(data.tags.map((t) => t.tag).filter(Boolean));

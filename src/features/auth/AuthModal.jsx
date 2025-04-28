@@ -40,17 +40,20 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
       }
       setLoading(true);
       try {
-        const res = await fetch("http://localhost:8083/auth/sign-up", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            userName: form.email,
-            userEmail: form.email,
-            userMobileNo: form.mobile,
-            userPassword: form.password,
-            userRole: "ROLE_MANAGER",
-          }),
-        });
+        const res = await fetch(
+          "https://test-service-dev-1084792667556.us-central1.run.app/auth/sign-up",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              userName: form.email,
+              userEmail: form.email,
+              userMobileNo: form.mobile,
+              userPassword: form.password,
+              userRole: "ROLE_MANAGER",
+            }),
+          }
+        );
         if (!res.ok) {
           const err = await res.json();
           setError(err.message || "Sign up failed");
@@ -84,13 +87,16 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
       try {
         // Create Basic Auth header
         const basicAuth = btoa(`${form.email}:${form.password}`);
-        const response = await fetch("http://localhost:8083/auth/sign-in", {
-          method: "GET",
-          headers: {
-            Authorization: `Basic ${basicAuth}`,
-          },
-          credentials: "include",
-        });
+        const response = await fetch(
+          "https://test-service-dev-1084792667556.us-central1.run.app/auth/sign-in",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Basic ${basicAuth}`,
+            },
+            credentials: "include",
+          }
+        );
 
         if (!response.ok) {
           const errorData = await response.json();
