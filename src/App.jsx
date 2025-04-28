@@ -5,7 +5,7 @@ import VideoCard from "./features/videos/VideoCard";
 import { videos } from "./mockData";
 import AuthModal from "./features/auth/AuthModal";
 import VideoUploadModal from "./features/videos/VideoUploadModal";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import VideoDetail from "./features/videos/VideoDetail";
 import Analytics from "./features/analytics/Analytics";
 import axios from "axios";
@@ -103,11 +103,28 @@ function App() {
     }
   };
 
+  const fetchTags = async () => {
+    setTagsLoading(true);
+    try {
+      const token = localStorage.getItem("access_token");
+      const data = await apiFetchTags(token);
+      if (data && data.tags) {
+        setAllTags(["All", ...data.tags.map((t) => t.tag)]);
+      } else {
+        setAllTags(["All"]);
+      }
+    } catch (err) {
+      setAllTags(["All"]);
+    } finally {
+      setTagsLoading(false);
+    }
+  };
+
   useEffect(() => {
     checkAuth();
     fetchTags();
-    // Initial video load
-    fetchVideos(0, true);
+    // Initial video load without search parameters
+    fetchVideos(0, "", [], "", []);
   }, []);
 
   // Add effect to reload videos when authentication state changes
@@ -116,7 +133,7 @@ function App() {
       setPage(0);
       setVideos([]);
       setHasMore(true);
-      fetchVideos(0, true);
+      fetchVideos(0, "", [], "", []);
     }
   }, [isAuthenticated]);
 
@@ -134,7 +151,7 @@ function App() {
     setPage(0);
     setVideos([]);
     setHasMore(true);
-    fetchVideos(0, true);
+    fetchVideos(0, "", [], "", []);
   };
 
   const handleLogout = () => {
@@ -179,27 +196,6 @@ function App() {
     },
     [loading]
   );
-
-  // Fetch tags
-  useEffect(() => {
-    const fetchTags = async () => {
-      setTagsLoading(true);
-      try {
-        const token = localStorage.getItem("access_token");
-        const data = await apiFetchTags(token);
-        if (data && data.tags) {
-          setAllTags(["All", ...data.tags.map((t) => t.tag)]);
-        } else {
-          setAllTags(["All"]);
-        }
-      } catch (err) {
-        setAllTags(["All"]);
-      } finally {
-        setTagsLoading(false);
-      }
-    };
-    fetchTags();
-  }, []);
 
   // Handler for search and filter from Header
   const handleSearch = (term, cat, diff, tagsArr) => {
@@ -299,6 +295,7 @@ function App() {
           />
           <Route path="/video/:id" element={<VideoDetail />} />
           <Route path="/analytics" element={<Analytics />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
     </div>
