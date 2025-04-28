@@ -105,7 +105,20 @@ function App() {
 
   useEffect(() => {
     checkAuth();
+    fetchTags();
+    // Initial video load
+    fetchVideos(0, true);
   }, []);
+
+  // Add effect to reload videos when authentication state changes
+  useEffect(() => {
+    if (isAuthenticated) {
+      setPage(0);
+      setVideos([]);
+      setHasMore(true);
+      fetchVideos(0, true);
+    }
+  }, [isAuthenticated]);
 
   useEffect(() => {
     if (location.pathname.startsWith("/video/")) {
@@ -116,7 +129,12 @@ function App() {
   // Unified handler for both modal close and login success
   const handleAuthCloseOrSuccess = () => {
     setAuthOpen(false);
-    setIsAuthenticated(!!localStorage.getItem("access_token"));
+    setIsAuthenticated(true);
+    // Reset and reload videos after successful authentication
+    setPage(0);
+    setVideos([]);
+    setHasMore(true);
+    fetchVideos(0, true);
   };
 
   const handleLogout = () => {
@@ -161,52 +179,6 @@ function App() {
     },
     [loading]
   );
-
-  // Initial fetch
-  useEffect(() => {
-    setVideos([]);
-    setPage(0);
-    setHasMore(true);
-    fetchVideos(
-      0,
-      searchTerm,
-      category,
-      difficulty,
-      selectedTag === "All" ? [] : [selectedTag]
-    );
-  }, [searchTerm, category, difficulty, selectedTag]);
-
-  // Infinite scroll observer
-  useEffect(() => {
-    if (!hasMore || loading) return;
-    const observer = new window.IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          fetchVideos(
-            page + 1,
-            searchTerm,
-            category,
-            difficulty,
-            selectedTag === "All" ? [] : [selectedTag]
-          );
-        }
-      },
-      { threshold: 1 }
-    );
-    if (loaderRef.current) observer.observe(loaderRef.current);
-    return () => {
-      if (loaderRef.current) observer.unobserve(loaderRef.current);
-    };
-  }, [
-    hasMore,
-    loading,
-    fetchVideos,
-    page,
-    searchTerm,
-    category,
-    difficulty,
-    selectedTag,
-  ]);
 
   // Fetch tags
   useEffect(() => {
